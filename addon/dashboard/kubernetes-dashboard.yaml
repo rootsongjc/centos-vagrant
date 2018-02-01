@@ -114,7 +114,7 @@ spec:
     spec:
       containers:
       - name: kubernetes-dashboard
-        image: k8s.gcr.io/kubernetes-dashboard-amd64:v1.8.2
+        image: jimmysong/kubernetes-dashboard-amd64:v1.8.2
         ports:
         - containerPort: 8443
           protocol: TCP
@@ -165,3 +165,4 @@ spec:
       targetPort: 8443
   selector:
     k8s-app: kubernetes-dashboard
+  type: NodePort

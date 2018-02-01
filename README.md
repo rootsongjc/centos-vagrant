@@ -1,13 +1,13 @@
-# Vagrant to setup kubernetes cluster
-vagrant file to build a kubernets cluster which consists of 1 master and 3 nodes. You don't have to create complicated ca files and dont't have to do a lot of configuration
+# Setting up a kubernetes cluster with Vagrant
+Using vagrant file to build a kubernetes cluster which consists of 1 master(also as role) and 3 nodes. You don't have to create complicated ca files or configuration.
 
 ### Why don't do that with kubeadm
 
-Because I want to setup the etcd, apiserver, controller, scheduler without docker container
+Because I want to setup the etcd, apiserver, controller, scheduler without docker container.
 
-### Architecutre
+### Architecture
 
-![archi](pic/arch.png)
+![archi](images/arch.png)
 
 
 ### Cluster network
@@ -28,23 +28,28 @@ The container network range is 170.30.0.0/30 owned by flanneld with GW mode
 ### Support Addon
 
 - CoreDNS
-- Dashboard with service VIP
+- Dashboard
 
 #### Setup
-```
+```bash
 git clone https://github.com/duffqiu/centos-vagrant.git
-
-cd centos-vagrant
-
+cd kubernetes-vagrant-centos
 vagrant up
 ```
 
 #### Connect to kubernetes
 
-```
+```bash
 vagrant ssh node1
-sudo su
+sudo -i
 kubectl get nodes
+```
+
+## Clean
+
+```bash
+vagrant destroy
+rm -rf .vagrant
 ```
 
 #### Note
